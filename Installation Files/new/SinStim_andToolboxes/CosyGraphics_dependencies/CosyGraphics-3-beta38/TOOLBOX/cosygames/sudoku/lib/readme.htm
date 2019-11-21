@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<style type="text/css">
+p{font-family:monospace;white-space:pre-wrap}
+</style>
+<title>readme.htm</title>
+</head>
+<body>
+<p>
+_____________
+MATLAB files
+¯¯¯¯¯¯¯¯¯¯¯¯¯
+ • SudokuSolver.m  - use this with MATLAB* to solve Sudokus
+ • SudokuMaker.m   - use this with MATLAB* to make Sudokus
+ • publisher.m     - use this with MATLAB* to make .png files of your Sudokus so that they can be printed and published
+
+ • numbers.png     - file used by publisher.m
+ • suma.m          - a function called by SudokuMaker.m
+ • other .m files  - needed by both SudokuSolver.m and SudokuMaker.m
+
+*Octave, a free imitator of MATLAB, can also "work"
+
+_____________
+my goal
+¯¯¯¯¯¯¯¯¯¯¯¯¯
+The sole purpose of this code is not to make some flashy software but to make the best code for making the most difficult Sudokus. My initial goal was to make the ABSOLUTE hardest Sudokus, but I soon only cared to make the quality so high (people can spend many years on this task), so you may not be able to make the world's hardest Sudoku, but they will get very close. Also, do not get upset if SudokuSolver.m tells you that a Sudoku that is claimed to be very difficult by the author is easy. This can be especially frustrating when you yourself cannot solve it. This happens because VERY difficult Sudokus are the target audience of my solver. I must say that there is one thing I did that was not intended to make the most difficult Sudokus. I added a feature to allow the created Sudokus to have various symmetries, even though these symmetries restrict the Sudoku maker from making the hardest Sudokus.
+
+Because I value GOOD algorithms, whenever I had to choose between speed and quality, I chose quality (don't worry... it's still plenty quick). For example, when resorting to guessing the number to some squares to solve a Sudoku, my code will try advanced algorithms instead of simple ones to test each guess. This slows the code down, but it allows for a more meaningful interpretation of the "depth of thread" value, which is the minimum number of guesses required.
+
+I made some very hard Sudokus. I have put the seeds that generated them in SudokuMaker.m. Good luck trying to solve them! Just don't use my code to do it because that will take, at most, a few seconds.
+
+This code is under the BSD license, so you can mostly do what you want with it. But! If you by blind luck use this code to create and publish the world's hardest Sudoku, please give me, Bradley Knockel, some credit (money is also good!).
+
+Lastly, I've done my best to make the code readable, so, if you are curious how Sudokus can be generated and solved with computers, feel free to look at it.
+
+_____________
+more info
+¯¯¯¯¯¯¯¯¯¯¯¯¯
+ • Release date of this version: April 2011
+ • Version of MATLAB I used: R2006b
+ • If you find bugs or have questions, leave me a message at www.BradleyKnockel.com
+
+Many thanks to...
+ • http://www.sudoku.org.uk/PDF/Solving_Sudoku.pdf
+ • http://www.sudokuwiki.org/Strategy_Families
+
+</p>
+</body>
+</html>

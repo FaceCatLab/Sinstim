@@ -1,0 +1,17 @@
+>> openparallelport_inpout32(hex2dec('378'))
+OPENPARALLELPORT_INPOUT32-info: Opening parallel port... InpOut32.dll is used instead of Matlab's Daq toobx...
+PARALLELPORT_INPOUT32-INFO : DLL file initialization OK.
+>> sendparallelbyte(255)
+
+ans =
+
+     4
+
+>> sendparallelbyte(0)
+
+ans =
+
+        4090
+
+>> closeparallelport
+>> 

@@ -1,0 +1,8 @@
+File automatically created by SinStim.
+v1.8.9
+19-Feb-2014 15:34:34
+C:\Documents and Settings\RossionPC\My Documents\1_experiments\Exp\Talia\4_Localizer_oddballfreq\parameters\
+C:\Documents and Settings\RossionPC\My Documents\1_experiments\Exp\Talia\4_Localizer_oddballfreq\stimuli\full_set
+C:\Documents and Settings\RossionPC\My Documents\1_experiments\Exp\Talia\4_Localizer_oddballfreq\data\derfghjkl\
+sinstim_TR_EEG_xp4_7.m
+derfghjkl_full_set

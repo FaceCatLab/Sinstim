@@ -1,0 +1,11 @@
+PTB-CRITICAL WARNING! Timing code detected a FAULTY high precision TIMER in your system hardware!(Delta 0.274737 secs).
+PTB-CRITICAL WARNING! Seems the timer sometimes randomly jumps forward in time by over 250 msecs!PTB-CRITICAL WARNING! Will switch back to lower precision/resolution timer (only +/-1 millisecond accuracy at best).
+PTB-CRITICAL WARNING! For more information see Microsoft knowledge base article Nr. 274323.
+PTB-CRITICAL WARNING! http://support.microsoft.com/default.aspx?scid=KB;EN-US;Q274323&
+
+PTB-CRITICAL WARNING! It is NOT RECOMMENDED to continue using this machine for studies that require high
+PTB-CRITICAL WARNING! timing precision in stimulus onset or response collection. No guarantees can be made
+PTB-CRITICAL WARNING! wrt. to timing or correctness of any timestamps or stimulus onsets!
+PTB-CRITICAL WARNING! Read 'help GetSecsTest' and run GetSecsTest for further diagnosis and troubleshooting.
+PTB-CRITICAL WARNING! It may also help to restart the machine to see if the problem is transient.
+PTB-CRITICAL WARNING! Also check the FAQ section of the Psychtoolbox Wiki for more information.

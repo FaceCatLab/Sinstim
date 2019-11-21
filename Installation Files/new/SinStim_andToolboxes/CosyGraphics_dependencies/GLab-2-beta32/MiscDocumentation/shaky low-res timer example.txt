@@ -1,0 +1,70 @@
+>> GetSecsTest
+Detaching F:\MATLAB6p5\work\TOOLBOX+\GLab-2-beta27\lib\Cogent2000\v1.29\mex\CogInput.mexw32
+Startup config file C:\boot.ini looks like this:
+[boot loader]
+
+timeout=30
+
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+
+[operating systems]
+
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS="Microsoft Windows XP Professional" /noexecute=optin /fastdetect /usepmtimer
+
+
+Seems that your system vendor applied some proper fixes for timing on your system... - Good! ;-)
+
+
+PTB-INFO: Multi-display setup in explicit multi-display mode detected. Using the following mapping:
+PTB-INFO: Screen 0 corresponds to the full Windows desktop area. Useful for stereo presentations in stereomode=4 ...
+PTB-INFO: Screen 1 corresponds to the display area of the monitor with the Windows-internal name \\.\DISPLAY1 ...
+PTB-INFO: Screen 2 corresponds to the display area of the monitor with the Windows-internal name \\.\DISPLAY2 ...
+
+PTB-INFO: Please note that beamposition queries for accurate Screen('Flip') timestamping are disabled by
+PTB-INFO: default on MS-Windows multi-display setups. If you want to use them, first run the 'PerceptualVBLSyncTest'
+PTB-INFO: script to verify they're working correctly on your setup. Then you can add the command:
+PTB-INFO: Screen('Preference', 'VBLTimestampingMode', 1); at the top of your script to manually enable them.
+PTB-INFO: Usually beamposition queries work correctly if both of your displays are set to the same resolution,
+PTB-INFO: color depths and video refresh rate, but you *must verify this*.
+
+The first block of tests tests timing precision with the new timing fixes applied...
+
+Testing precision and tick rate of the low precision reference timer and high precision timer...
+The average duration of a low-res timer tick is 1.000000 milliseconds.
+The low-res timer runs at 1 msec resolution. It is suitable as a fallback-timesource in case
+of trouble with the high-res timer. Good!
+
+The low-res timer showed timing spikes a total of 2 times. Maximum spike 3.000000 msecs.
+
+The low-res timer seems to be a bit shaky. That will only be a problem if it shows large spikes often,
+because it could cause the online correctness tests to fail (false positive) and trigger an unwanted
+switch from the high-res timer to the unreliable low-res timer.
+Small occasional spikes are not uncommon on such a deficient system as Windows. Many spikes could
+indicate that some of your hardware devices or its drivers don't operate optimally or the system
+is severly overloaded in some way.
+
+lag1 =      650.531130 , lag100000 =      650.860956 - Not too important...
+
+Ratio of elapsed time in high-res vs. low-res clock:    1.0004255812
+
+Going to sleep for 10 seconds, then checking if this idle time did something bad...
+Elapsed time should be 10 seconds: lowres timer says 10.009000 secs, highres timer says 10.010074 secs.
+So far your system behaved well. This could mean it is well behaved.
+it could also mean that it is broken, but PTB's built in work-arounds provide
+an effective fix for the brokeness.
+Unfortunately it could also mean that the test is unable to detect real problems (false negative) :(
+
+
+
+The second block of tests tries to assess how your system would behave without
+PTB's special builtin work-arounds enabled. This is a hint on how the system behaved
+with Psychtoolbox versions prior to 23rd November 2007, and how it would likely behave
+with other psychophysics toolkits...
+
+The average duration of a low-res timer tick is 1.000000 milliseconds.
+The low-res timer still runs at 1 msec resolution. That means that our test is
+not diagnostic. Please exit and restart Matlab, then retry. Make sure that any
+kind of multi-media applications are closed while the test is running
+
+??? Error using ==> GetSecsTest at 271
+Test failed, because could not disable 1khZ timer Interrupts.

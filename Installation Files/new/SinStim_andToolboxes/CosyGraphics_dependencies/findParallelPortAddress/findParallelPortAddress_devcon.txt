@@ -1,0 +1,26 @@
+>> devcon hwids =Ports
+ACPI\PNP0401\5&17C68A2&0
+    Name: Port imprimante ECP (LPT1)
+    Hardware ID's:
+        ACPI\PNP0401
+        *PNP0401
+ACPI\PNP0501\1
+    Name: Port de communication (COM1)
+    Hardware ID's:
+        ACPI\PNP0501
+        *PNP0501
+FTDIBUS\VID_0403+PID_6001+A6008MKJA\0000
+    Name: USB Serial Port (COM7)
+    Hardware ID's:
+        FTDIBUS\COMPORT&VID_0403&PID_6001
+3 matching device(s) found.
+
+
+>> devcon resources ACPI\PNP0401
+ACPI\PNP0401\5&17C68A2&0
+    Name: Port imprimante ECP (LPT1)
+    Device is currently using the following resources:
+        IO  : 0378-037f
+        IO  : 0778-077f
+        DMA : 0
+1 matching device(s) found.

@@ -1,0 +1,1 @@
+This folder contains current version (1.28) of the Cogent Graphics library.

@@ -1,0 +1,8 @@
+File automatically created by SinStim.
+v1.8.9
+12-Feb-2014 14:55:53
+C:\Documents and Settings\RossionPC\My Documents\MATLAB\SinStim\Exp\Talia\screentest\parameters\
+C:\Documents and Settings\RossionPC\My Documents\MATLAB\SinStim\Exp\Talia\screentest\stimuli\faces2test
+C:\Documents and Settings\RossionPC\My Documents\MATLAB\SinStim\save
+test_optimize_newcomp2014.m
+0

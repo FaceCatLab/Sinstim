@@ -1,0 +1,60 @@
+sinstim1p7alpha: Preparing experiment...
+ 
+sinstim1p7alpha: Starting experiment...
+DISPLAYANIMATION-info: Preparing animation...
+SETPRIORITY-info: Priority set to "HIGH".
+DISPLAYANIMATION-info: Starting real-time animation...
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 2  3. Skipping frame(s) # 3  4 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 393. Skipping frame(s) # 394 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 394. Skipping frame(s) # 395 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 396. Skipping frame(s) # 397 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 4068. Skipping frame(s) # 4069 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 4069. Skipping frame(s) # 4070 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 4071. Skipping frame(s) # 4072 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 4073. Skipping frame(s) # 4074 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 4075. Skipping frame(s) # 4076 to correct temporal shift.
+DISPLAYANIMATION-WARNING: Missed  frame(s) # 4077. Skipping frame(s) # 4078 to correct temporal shift.
+DISPLAYANIMATION-info: ...end real-time animation.
+SETPRIORITY-info: Priority set to "NORMAL".
+DISPLAYANIMATION-info: Stats about the animation have been exported to your workspace.
+                       You can now find it in the "stats" structure:
+ 
+                            ScreenFreq_Hz: 59.7633
+                              GLabVersion: '2-beta27'
+                            MatlabVersion: '7.5.0.342 (R2007b)'
+                                     Mode: 'isochronous'
+                                Displayed: 4183
+            MissedRefreshDeadlines_ERRORS: 11
+                   FramesSkippedToCorrect: 11
+      MissedRefreshDeadlines_frameindexes: [2 393 395 397 4068 4070 4072 4074 4076 4078]
+     MissedRefreshDeadlines_framespermiss: [2 1 1 1 1 1 1 1 1 1]
+                                BytesSent: 247
+                      BytesNotSent_ERRORS: 1
+                BytesNotSent_frameindexes: 4077
+                      BytesNotSent_values: 1
+            PhotodiodeNotDisplayed_ERRORS: 0
+      PhotodiodeNotDisplayed_frameindexes: []
+         PhotodiodeNotDisplayed_halfbytes: []
+                       DelayBeforeStart_s: 1.0040
+                          TotalDuration_s: 69.9928
+                     TotalDuration_frames: 4183
+                      TotalDuration_ERROR: 0
+              TotalDurationImprecision_ms: 0.0541
+                     CpuTime_FirstLoop_ms: 1.7804
+                    CpuTime_SecondLoop_ms: 33.7697
+                  CpuTime_MinMedianMax_ms: [-1.5990e+007 1.7178 3.5988]
+                  CpuLoad_MinMedianMax_pc: [-9.5559e+007 10.2662 21.5075]
+              CpuLoadAboveCapacity_ERRORS: 1
+        CpuLoadAboveHalfCapacity_WARNINGS: 1
+         TimerImprecision_MinMedianMax_ms: [9.4052e-005 NaN 7.6087]
+          TimerImprecisionAbove2ms_ERRORS: 20
+    TimerImprecisionAbove2ms_frameindexes: [2 5 392 393 397 399 930 931 1409 1410 1467 1468 1656 1657 2006 2007 2544 2545 4067 4068]
+                               PERDISPLAY: [1x1 struct]
+                               
+DISPLAYANIMATION-WARNING: 
+11 missed frames, on 4183 displays.
+Displays which where missed are displays #:  2   393   395   397  4068  4070  4072  4074  4076  4078
+Isochronous mode: Frames have been skipped to correct the phase shift.
+ 
+DISPLAYANIMATION-info: Done.
+                               

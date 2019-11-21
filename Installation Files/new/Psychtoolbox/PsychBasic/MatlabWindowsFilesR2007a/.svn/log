@@ -1,0 +1,471 @@
+<modify-entry
+   name="PsychHID.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/PsychHID.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.tmp"/>
+<readonly
+   name=".svn/prop-base/PsychHID.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="PsychHID.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="PsychHID.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/PsychHID.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="PsychHID.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="PsychHID.mexw32"
+   name=".svn/tmp/text-base/PsychHID.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/PsychHID.mexw32.svn-base"
+   name=".svn/tmp/text-base/PsychHID.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/PsychHID.mexw32.svn-base"/>
+<modify-entry
+   name="PsychHID.mexw32"
+   checksum="a2d4a4ebbf384dc4f6fc18e9a25389f4"/>
+<modify-entry
+   name="PsychHID.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="PsychHID.mexw32"
+   working-size="working"/>
+<rm
+   name=".svn/tmp/tempfile.tmp"/>
+<modify-entry
+   name="IOPort.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/IOPort.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.2.tmp"/>
+<readonly
+   name=".svn/prop-base/IOPort.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="IOPort.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="IOPort.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/IOPort.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="IOPort.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/IOPort.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="IOPort.mexw32"
+   name=".svn/tmp/text-base/IOPort.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/IOPort.mexw32.svn-base"
+   name=".svn/tmp/text-base/IOPort.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/IOPort.mexw32.svn-base"/>
+<modify-entry
+   name="IOPort.mexw32"
+   checksum="4287ed21903c8dca8b99fe7aa9ba70c8"/>
+<modify-entry
+   name="IOPort.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="IOPort.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="GetSecs.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/GetSecs.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.3.tmp"/>
+<readonly
+   name=".svn/prop-base/GetSecs.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="GetSecs.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="GetSecs.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/GetSecs.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="GetSecs.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/GetSecs.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="GetSecs.mexw32"
+   name=".svn/tmp/text-base/GetSecs.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/GetSecs.mexw32.svn-base"
+   name=".svn/tmp/text-base/GetSecs.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/GetSecs.mexw32.svn-base"/>
+<modify-entry
+   name="GetSecs.mexw32"
+   checksum="b183ffc2ab829beade61d7c26e2d16fa"/>
+<modify-entry
+   name="GetSecs.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="GetSecs.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="PsychKinectCore.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/PsychKinectCore.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.4.tmp"/>
+<readonly
+   name=".svn/prop-base/PsychKinectCore.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="PsychKinectCore.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="PsychKinectCore.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/PsychKinectCore.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="PsychKinectCore.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/PsychKinectCore.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="PsychKinectCore.mexw32"
+   name=".svn/tmp/text-base/PsychKinectCore.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/PsychKinectCore.mexw32.svn-base"
+   name=".svn/tmp/text-base/PsychKinectCore.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/PsychKinectCore.mexw32.svn-base"/>
+<modify-entry
+   name="PsychKinectCore.mexw32"
+   checksum="201acda10d490b1f55843a53572a5fee"/>
+<modify-entry
+   name="PsychKinectCore.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="PsychKinectCore.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="PsychPortAudio.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/PsychPortAudio.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.5.tmp"/>
+<readonly
+   name=".svn/prop-base/PsychPortAudio.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="PsychPortAudio.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="PsychPortAudio.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/PsychPortAudio.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="PsychPortAudio.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/PsychPortAudio.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="PsychPortAudio.mexw32"
+   name=".svn/tmp/text-base/PsychPortAudio.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/PsychPortAudio.mexw32.svn-base"
+   name=".svn/tmp/text-base/PsychPortAudio.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/PsychPortAudio.mexw32.svn-base"/>
+<modify-entry
+   name="PsychPortAudio.mexw32"
+   checksum="8cd8b1c0bf7310c909a01eef0766792b"/>
+<modify-entry
+   name="PsychPortAudio.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="PsychPortAudio.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="Screen.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/Screen.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.6.tmp"/>
+<readonly
+   name=".svn/prop-base/Screen.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="Screen.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="Screen.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/Screen.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="Screen.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/Screen.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="Screen.mexw32"
+   name=".svn/tmp/text-base/Screen.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/Screen.mexw32.svn-base"
+   name=".svn/tmp/text-base/Screen.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/Screen.mexw32.svn-base"/>
+<modify-entry
+   name="Screen.mexw32"
+   checksum="dfce36b545782b77e5af0e375acc50d4"/>
+<modify-entry
+   name="Screen.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="Screen.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="Eyelink.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/Eyelink.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.7.tmp"/>
+<readonly
+   name=".svn/prop-base/Eyelink.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2150"
+   committed-date="2011-06-14T20:58:13.255130Z"
+   name="Eyelink.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="Eyelink.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2150/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/Eyelink.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="Eyelink.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/Eyelink.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="Eyelink.mexw32"
+   name=".svn/tmp/text-base/Eyelink.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/Eyelink.mexw32.svn-base"
+   name=".svn/tmp/text-base/Eyelink.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/Eyelink.mexw32.svn-base"/>
+<modify-entry
+   name="Eyelink.mexw32"
+   checksum="3908058f23371ce16246a94a7740581e"/>
+<modify-entry
+   name="Eyelink.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="Eyelink.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="moalcore.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/moalcore.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.8.tmp"/>
+<readonly
+   name=".svn/prop-base/moalcore.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2150"
+   committed-date="2011-06-14T20:58:13.255130Z"
+   name="moalcore.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="moalcore.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2150/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/moalcore.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="moalcore.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/moalcore.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="moalcore.mexw32"
+   name=".svn/tmp/text-base/moalcore.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/moalcore.mexw32.svn-base"
+   name=".svn/tmp/text-base/moalcore.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/moalcore.mexw32.svn-base"/>
+<modify-entry
+   name="moalcore.mexw32"
+   checksum="8441b1e589f0d7958f621a10485bc72b"/>
+<modify-entry
+   name="moalcore.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="moalcore.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="WaitSecs.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/WaitSecs.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.9.tmp"/>
+<readonly
+   name=".svn/prop-base/WaitSecs.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name="WaitSecs.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="WaitSecs.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/WaitSecs.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="WaitSecs.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/WaitSecs.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="WaitSecs.mexw32"
+   name=".svn/tmp/text-base/WaitSecs.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/WaitSecs.mexw32.svn-base"
+   name=".svn/tmp/text-base/WaitSecs.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/WaitSecs.mexw32.svn-base"/>
+<modify-entry
+   name="WaitSecs.mexw32"
+   checksum="ee637c96aaece42bc164d6099ef272b4"/>
+<modify-entry
+   name="WaitSecs.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="WaitSecs.mexw32"
+   working-size="working"/>
+<modify-entry
+   name="moglcore.mexw32"
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/moglcore.mexw32.svn-base"
+   name=".svn/prop-base/tempfile.10.tmp"/>
+<readonly
+   name=".svn/prop-base/moglcore.mexw32.svn-base"/>
+<modify-entry
+   committed-rev="2150"
+   committed-date="2011-06-14T20:58:13.255130Z"
+   name="moglcore.mexw32"
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name="moglcore.mexw32"
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2150/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/moglcore.mexw32"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name="moglcore.mexw32"
+   url="http://svn.berlios.de/svnroot/repos/osxptb/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a/moglcore.mexw32"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="2352"/>
+<cp-and-translate
+   dest="moglcore.mexw32"
+   name=".svn/tmp/text-base/moglcore.mexw32.svn-base"/>
+<mv
+   dest=".svn/text-base/moglcore.mexw32.svn-base"
+   name=".svn/tmp/text-base/moglcore.mexw32.svn-base"/>
+<readonly
+   name=".svn/text-base/moglcore.mexw32.svn-base"/>
+<modify-entry
+   name="moglcore.mexw32"
+   checksum="6195ea9f06fef2fe4f67899ab022daf1"/>
+<modify-entry
+   name="moglcore.mexw32"
+   text-time="working"/>
+<modify-entry
+   name="moglcore.mexw32"
+   working-size="working"/>
+<modify-entry
+   committed-rev="2337"
+   committed-date="2011-10-21T06:40:21.883958Z"
+   name=""
+   last-author="kleinerm"
+   uuid="f5efbe48-b203-0410-9429-fc5e098e5a54"/>
+<modify-wcprop
+   name=""
+   propname="svn:wc:ra_dav:version-url"
+   propval="/svnroot/repos/osxptb/!svn/ver/2337/beta/Psychtoolbox/PsychBasic/MatlabWindowsFilesR2007a"/>

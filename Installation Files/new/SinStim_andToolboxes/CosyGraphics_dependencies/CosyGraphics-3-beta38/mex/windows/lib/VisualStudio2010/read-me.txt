@@ -1,0 +1,4 @@
+"msvcr100.dll" is the VisualStudio 2010 run-time environnement.
+
+It is required by some mex-files (currently -16/jun/2011- WaitVerticalBlank, probably more in the future). 
+WaitVerticalBlank needs the path to "msvcr100.dll" as argument.

@@ -1,0 +1,36 @@
+% 1) No EL
+% Eyelink('IsConnected')          0
+% Eyelink('initialize')           10065 
+% Eyelink('CheckRecording')       crash!
+%
+% 1b) EL connected, but cable fault
+% Eyelink('initialize')           -201
+% 
+% 2) EL connected, Link Closed (never initialized)
+% Eyelink('IsConnected')          0
+% Eyelink('initialize')           0  (--> "TCP/IP Link Open")  dt = 306 msec on DARTAGNAN
+% Eyelink('CheckRecording')       crash!
+% 
+% 3) EL connected, Link Open
+% Eyelink('IsConnected')          1
+% Eyelink('initialize')           0  + print 'Eyelink already initialized'  (do nothing, dt= 0.1ms)
+% Eyelink('CheckRecording')       -1
+% 
+% 4a) EL connected, Link has been open, then EL has been restarted
+% Eyelink('IsConnected')          0
+% Eyelink('initialize')           0  + print 'Eyelink already initialized', but do nothing !!!
+%     fix:  Eyelink('shutdown'); Eyelink('initialize');
+% Eyelink('CheckRecording')       crash!
+% 
+% 4b) EL connected, Link has been open, then MATLAB has been restarted
+% Eyelink('IsConnected')          0
+% Eyelink('initialize')           0   no problem
+% Eyelink('Shutdown')                 no crash, but does nothing
+%
+% 5) EL connected, Link Open, EL recording
+% Eyelink('CheckRecording')       0
+% 
+% NB:
+% Eyelink('Shutdown')  never crashes
+% Eyelink('StartRecording')  if already started: restart recording (no crash)
+% Eyelink('StopRecording')   if already stoped: no crash

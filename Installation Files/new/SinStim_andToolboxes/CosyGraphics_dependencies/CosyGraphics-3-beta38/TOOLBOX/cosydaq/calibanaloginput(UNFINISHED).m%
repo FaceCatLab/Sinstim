@@ -1,0 +1,104 @@
+function [Xgain,Xoffset,Ygain,Yoffset] = calibanaloginput(XY)
+% CALIBANALOGINPUT  Calibrate Analog Input signal (often from a joystick).
+%    [Xgain,Xoffset,Ygain,Yoffset] = CALIBANALOGINPUT(XY)  starts calibration procedure.
+%       'XY': Calibration points co-ordinates matrix (pixels). Column 1: X, column 2: Y.
+%       Co-ordinates are in pixels. If you want degrees, see SETSCREENWIDTH, DEG2PIX.
+%
+%    CalibValues = CALIBANALOGINPUT(XY)  returns the 4 values in one vector (same order as above).
+%
+% Example:
+%     startcogent(1, [800 600]); % Init display.
+%     openanaloginput('nidaq', '', [0 1], 1000, 30); % Init Analog Input on a NI board, on channels 0 and 1.
+%     XY = [0 0; -300 0; 300 0; 0 200; 0 -200]; % Define calib points co-ordinates.
+%     calibanaloginput(XY);
+%
+% Ben.J.,   Nov 2007,    v1.0
+%           Oct 2012:,   v2.0  Port to CGr3. Check nargin. Doc+.
+
+
+global AI
+
+
+%% Params 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+FixDur = 500; % ms
+AfterDur = 500; % wait time after calib. to avoid anticipations
+CalibPtColor = [0 1 0];
+AiColor = [1 0 0];
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Input Args
+if nargin < 1
+    error('Missing input argument.')
+elseif size(XY,2) ~= 2
+    error('Invalid argument: XY must be a 2 column matrix.')
+end
+
+
+%% Init acquisition
+AI = openanaloginput('nidaq', '', [0 1], 1000, 60);
+
+
+%% Splash screen
+drawtext('Click mouse button when ready.',0,[0 -290],'Courier',12,[.6 .6 .6]);
+displaybuffer;
+waitmouseclick;
+
+
+%% MAIN LOOP
+Volt = zeros(size(XY));
+n = 1;
+
+while n <= size(XY,1)
+	start(AI); % ------------------------------------------
+	
+	clearbuffer;
+	drawsquare(CalibPtColor, 0, XY(n,:), 2);
+	displaybuffer;
+    
+    waitmouseclick;
+    wait(FixDur + 100);
+    % Get current x, y value from daq board:
+    nSamples = ceil(FixDur * AI.SampleRate / 1000);
+    d = peekdata(AI,nSamples);
+    Volt(n,1) = mean(d(:,1));
+    Volt(n,2) = mean(d(:,2));
+    n = n + 1;
+    wait(AfterDur)
+	
+	stop(AI); % ------------------------------------------
+    
+    if isabort
+        stopcogent
+        return
+    end
+end % END WHILE
+
+
+%% CALIBRATE
+% Volt(:,2) = -Volt(:,2); % not necessary
+xcal = polyfit(Volt(:,1),XY(:,1),1); % Same calib. algorhythm than in Eyeview
+ycal = polyfit(Volt(:,2),XY(:,2),1);
+Xgain   = xcal(1);
+Xoffset = xcal(2);
+Ygain   = ycal(1);
+Yoffset = ycal(2);
+CalibratedXY = [Xgain*Volt(:,1) + Xoffset, Ygain*Volt(:,2) + Yoffset];
+
+
+%% DISPLAY RESULTS
+clearbuffer;
+drawsquare(CalibPtColor,0,XY,4);
+drawsquare(AiColor,0,CalibratedXY,2);
+displaybuffer;
+
+waitmouseclick;
+
+
+%% STOP
+% delete(AI)
+
+
+%% OUTPUT ARG.
+if nargout < 2, Xgain = [Xgain,Xoffset,Ygain,Yoffset]; end

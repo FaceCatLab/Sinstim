@@ -1,0 +1,1 @@
+Gama is a program which measures the gamma of your screen.

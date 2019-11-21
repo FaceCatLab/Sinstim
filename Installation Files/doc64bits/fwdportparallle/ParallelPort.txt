@@ -1,0 +1,61 @@
+Configuration of the PC:
+
+ACPI\PNP0401\4&25FD9851&0 
+    Name: Port imprimante ECP (LPT1) 
+    Hardware ID's: 
+        ACPI\PNP0401 
+        *PNP0401 
+ACPI\PNP0501\1 
+    Name: Port de communication (COM1) 
+    Hardware ID's: 
+        ACPI\PNP0501 
+        *PNP0501 
+    Compatible ID's: 
+        *PNP0500 
+ACPI\PNP0501\2 
+    Name: Port de communication (COM2) 
+    Hardware ID's: 
+        ACPI\PNP0501 
+        *PNP0501 
+    Compatible ID's: 
+        *PNP0500 
+PCI\VEN_8086&DEV_29B7&SUBSYS_2819103C&REV_02\3&42FFD25&0&1B 
+    Name: Intel(R) Active Management Technology - SOL (COM3) 
+    Hardware ID's: 
+        PCI\VEN_8086&DEV_29B7&SUBSYS_2819103C&REV_02 
+        PCI\VEN_8086&DEV_29B7&SUBSYS_2819103C 
+        PCI\VEN_8086&DEV_29B7&CC_070002 
+        PCI\VEN_8086&DEV_29B7&CC_0700 
+    Compatible ID's: 
+        PCI\VEN_8086&DEV_29B7&REV_02 
+        PCI\VEN_8086&DEV_29B7 
+        PCI\VEN_8086&CC_070002 
+        PCI\VEN_8086&CC_0700 
+        PCI\VEN_8086 
+        PCI\CC_070002 
+        PCI\CC_0700 
+
+TAKE THIS ONE (the only parallel port, the others are serial ports):
+
+>> devcon resources ACPI\PNP0401
+ACPI\PNP0401\4&25FD9851&0 
+    Name: Port imprimante ECP (LPT1) 
+    Device is currently using the following resources: 
+        IO  : 0378-037f 
+        IO  : 0778-077d 
+        DMA : 3 
+        IRQ : 7 
+1 matching device(s) found. 
+>> 
+
+The name of the parallel port is 0378.
+
+Then go further in Goedele's procedure.
+However it seems that no matter which number is used, the following message appears:
+
+OPENPARALLELPORT_INPOUT32-info: Opening parallel port... InpOut32.dll is used instead of Matlab's Daq toobx...
+
+The important thing is to have it right in sinstim.
+To do so, follow Giulia's procedure (matlab 32, windows 64)
+
+

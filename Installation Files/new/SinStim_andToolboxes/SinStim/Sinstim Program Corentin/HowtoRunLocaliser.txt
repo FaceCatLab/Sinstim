@@ -1,0 +1,25 @@
+How to run Corentin's localiser experiment
+
+1. Copy custom sinstim program files
+Sinstim Program Corentin
+- makebins
+- sinstim_customStimList
+- sinstim_runBlockSweep_customStimList
+- sinstim1p8p9_customStimList
+
+2. Save path to Sinstim Program Corentin folder in Matlab
+
+3. In experiment folder, copy 
+- parameters
+- stimuli (contains all stimuli + stimList folder)
+- Stimuli_getStims
+- Generate_stimList.m
+
+4. Open Matlab
+
+5. Change path to directory where the parameter & stimuli folders have been copied
+(!! very important)
+
+6. run sinstim_customStimList
+
+7. use runBlockSweep_customStimList when creating trial lists 

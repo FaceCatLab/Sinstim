@@ -1,0 +1,41 @@
+%% 2beta0
+
+replace cogentroot glabroot
+replace COGENTROOT GLABROOT
+replace COGENTM GLABM
+replace COGENTH GLABH
+replace COGENTV GLABV
+replace COGENTG GLABG
+replace PCOGENT PGLAB
+replace RCOGENT RGLAB
+replace cogentm glabm
+replace cogenth glabh
+replace cogentv glabv
+replace cogentg glabg
+replace pcogent pglab
+replace rcogent rglab
+replace('Coogent 2007','G-Lab')
+replace('Coogent2007','G-Lab')
+replace('Cogent2007','G-Lab')
+replace('Cogent 2007','G-Lab')
+replace('COGENT 2007','G-LAB')
+replace('COGENT2007','G-LAB')
+replace('COGENT 2007','G-LAB')
+replace('COGENT_','GLAB_')
+replace CDCOG CDGLAB
+replace cdcog cdglab
+edit glabhelp, glabmanual, glabsetup  % manual modifs
+
+replace GLAB_REQUESTED_SCREEN_FREQUENCY GLAB_DISPLAY.RequestedScreenFrequency
+replace GLAB_MEASURED_SCREEN_FREQUENCY GLAB_DISPLAY.MeasuredScreenFrequency
+edit getframedur getscreenfreq opendisplay  % manual modifs
+replace GLAB_SCREEN_WIDTH_CM GLAB_DISPLAY.ScreenWidthCM
+edit deg2pix getscreenwidthcm pix2deg setscreenwidthcm  % manual modifs
+edit glabglobal  % manual modifs
+
+% + manual changes: "Cogent" -> "G-Lab", "COGENT" -> "GLAB"
+
+
+%% 2beta6
+
+% Fix drawshape: GLAB_CURRENT_BUFFER -> GLAB_BUFFERS.CurrentBuffer

@@ -1,0 +1,90 @@
+Optimizing your OS
+
+Like any multi-tasking operating system, applications running on Windows don't have exclusive control of the CPU. The operating system ultimately decides which processes run at any particular moment, for how long, and if they can be interrupted. This creates a problem for time critical applications because if that application is not even running for a given interval, it cannot accurately report the time of an event that occurs during that interval.
+
+Presentation's uncertainty feature is designed to notify you of the size of any interruptions that affect the events of interest (for more information on timing precision, please see this .pdf file). Therefore, no operating system activity affecting timing accuracy can go unnoticed. However, mere notification does not help if the percentage of affected events is too high.
+
+On Windows 95/98/ME, Presentation runs with a real-time priority so that other applications cannot run. Although the operating system can still interrupt, this is typically never a problem. On Windows 9x you might expect 99.9% of the uncertainties to be under 1 ms with a default configuration. Because of the structure of DirectX on Windows 2000/XP, Presentation cannot run with a real-time priority on Windows 2000/XP. The following sections present ways to optimize performance on Windows 2000/XP.
+
+5 minute benchmark for a scenario that does nothing on Windows XP in the default configuration. Timing intervals exceeded 1 ms 3% of the time.
+	
+
+5 minute benchmark for a scenario that does nothing on Windows XP after following the advice below. Timing intervals exceeded 1 ms 0.14% of the time. Some process is still interrupting for 19ms occasionally. We may or may not be able to eliminate this.
+
+Shut down other applications
+
+Shut down all other applications that you started since you started your Windows session. This includes such items as browser windows, chat clients, email programs etc. You can recognize open programs by their entries in the taskbar at the bottom of the screen. Shut down all of these applications prior to running a Presentation experiment. Be sure to also shut down any programs running in the system tray (lower-right corner of the screen, next to the system time display).
+
+Shut down screensavers and power management
+
+On the "Screen Save" tab of Windows' "Display Properties" window, select "(None)" as the screen saver. In the power options window, turn off all features related to power management - hibernation, advanced power management support, turning off monitors or hard drives.
+
+Creating a Hardware Profile for Presentation
+
+Hardware Profiles allow a user to have multiple configurations of the Windows operating system on the same machine. A hardware profile is a set of instructions that tells Windows what devices and services to start when you start your computer. At system startup Windows presents the user with a menu listing all the available Hardware Profiles. NBS recommends creating a Hardware Profile named "Presentation" that is optimally configured for use with Presentation. The steps for setting up and configuring this Hardware Profile are as follows:
+
+    * Under the Start Menu, click Control Panel, then choose System
+    * On the Hardware tab of the System Properties Window, click the Hardware Profiles button
+    * If you haven't previously created Hardware Profiles for other configurations, you should see a single profile named "Profile 1(Current)" listed in the Available Hardware Profiles box. Click the Copy button to create a new copy of Profile 1. Choose "Presentation" as the name for the new profile.
+    * In the Hardware profiles selection section of the window, choose "Select the first profile listed ..." radio button, and change the duration to 15 seconds. This is the window of time the user has to select a Hardware Profile at boot.
+
+You have now created a hardware profile for use with Presentation. Currently it is an exact copy of your current configuration and has not been optimized for use with Presentation. The information in the following sections will help you configure your newly created "Presentation" hardware profile for optimum performance.
+
+Shutting down unnecessary services
+
+Services are applications that run in the background, similar to UNIX daemons. Some services are essential to run windows, but many are needed only for specific, sometimes rare computing tasks. Since we are configuring a Hardware Profile that will be used solely to run Presentation experiments, we will shut down all but the most basic services.
+
+We only want these services to be disabled for our "Presentation" hardware profile. Windows allows you to enable and disable services on a profile-by-profile basis. To disable a service for a specific Hardware Profile, open the service control panel by clicking Start->Control Panel->Administrative Tools->Computer Management. In the Computer Management interface open the "Services and Applications" node and click on the "Services" item. You will now be presented with information on all the services installed on your system. Perform the following actions for each of the services listed below. If a service in the list below does not exist on your machine, skip it and move on to the next item.
+
+Right-click a service in the services list and choose "Properties", navigate to the "LogOn" tab. Near the bottom of the tab will be a list of your system's Hardware Profiles and the current service's state for each profile. Select the "Presentation" hardware profile and click the disable button. The next time you startup your computer with the "Presentation" Hardware Profile, the disabled service will not start. Click OK to save your changes, and move on to the next service in the list.
+
+Following is a list of common services you may want to shut down.
+
+    * Alerter
+    * Background Intelligent Transfer Service
+    * Clip Book
+    * Computer Browser
+    * DHCP Client (only if you are disabling your network connections)
+    * Distributed Link Tracking Client
+    * Distributed Transaction Coordinator
+    * DNS Client (only if you are disabling your network connections)
+    * Error Reporting Service
+    * Fast User Switching Compatibility
+    * Help and Support
+    * Indexing Service
+    * IPSEC Services
+    * Messenger
+    * Net Login
+    * NetMeeting Remote Desktop Sharing
+    * Network DDE
+    * Network DDE DSDM
+    * Network Location Awareness
+    * NT LM Security Support Provider
+    * Performance Logs and Alerts
+    * Portable Media Serial Number
+    * Print Spooler
+    * Protected Storage
+    * QOS RSVP
+    * Remote Registry Service
+    * Removable Storage
+    * Routing and Remote Access
+    * RunAs Service
+    * Secondary Logon
+    * Smart Card
+    * Smart Card Helper
+    * Task Scheduler
+    * TCP/IP NetBIOS Helper
+    * Terminal Sevices
+    * Telnet
+    * Themes
+    * Upload Manager
+    * WebClient
+
+For other services that you may have running on your system, use the descriptive text for each service to determine if you really need it when running Presentation.
+
+Disable Unnecessary Hardware
+
+Unless your experiment requires network access to function correctly, use the windows control panel to temporarily disable network connections, as they use system interrupts that can adversely affect the timing uncertainty values in your experiments. The steps required to disable a network connection are as follows:
+
+Restart your computer and choose the "Presentation" profile from the profiles menu during startup. Once you logged in to Windows, open the Network Connections configuration panel by clicking Start->Control Panel->Network Connections. In the list of connections right-click the "Local Area Connection" connection and choose "disable" from the context menu.
+	  

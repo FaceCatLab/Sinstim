@@ -1,0 +1,38 @@
+MATLAB 2007b and Java heap woes
+
+I had the issue where MATLAB 2007b would only start once after a cold reboot, and then refuse to start (the splash screen would pop up and immediately close). I finally sat on my posterior and traced it with process monitor; the very last step was writing to a java.log file in my AppData/temp; the contents suggested that the Java VM could not allocate the requested amount of contiguous heap space. This gave me enough keywords to find the following:
+
+http://www.mathworks.de/matlabcentral/newsreader/view_thread/161788
+
+I reproduce the relevant part of the thread (which cites a Mathcentral tech support message):
+
+This error is currently under investigation. The current
+workaround is to set an environment variable that will
+bypass the error. Please try the following to start MATLAB:
+
+1) Go to the Start menu to Control Panel.
+
+2) Double click on "System" and go to the Advanced tab (for
+Vista go to "System and Maintenance" to "System" to
+"Advanced System Settings".
+
+3) Click the Environment Variables button.
+
+4) Click "New" under either option (System or User
+variables) to create a new variable. The variable name will
+be MATLAB_RESERVE_LO. The variable value will be the number
+0 (zero). Press OK to save the changes.
+
+EXPLANATION:
+
+Setting MATLAB_RESERVE_LO=0 tells MATLAB to bypass the
+functionality introduced in R2007b (for Windows only) that
+tries to reserve the largest available contiguous space for
+MATLAB arrays. This process guarantees that at least 256MB
+is left available for use by Java for the Heap and PermGen
+spaces. It appears that Windows is either loading a DLL or
+doing a malloc somewhere in this 256MB space, so that when
+Java tries to reserve the Heap and PermGen address space, it
+fails, since both the Heap and PermGen spaces must be
+contiguous. If MATLAB_RESERVE_LO is set to 0, the reserve
+is for a fixed amount of space, not the largest available space.

@@ -1,0 +1,52 @@
+function [KeyOut,TimesOut] = waitkeydown(varargin)
+% WAITKEYDOWN  Waits for key press.
+%    [KeyOut,Times] = WAITKEYDOWN  waits for any key press and returns the key ID 
+%        and press time.
+%    [KeyOut,Times] = WAITKEYDOWN(KeyIn)  waits only for key(s) whose ID(s) are
+%        given in vector "KeyIn".
+%
+% Examples:
+%     WAITKEYDOWN(1000) waits 1000 milliseconds for any key press
+%     WAITKEYDOWN(1000,17) waits 1000 milliseconds for key 1 (A) to be pressed
+%     WAITKEYDOWN(1000,[17 2]) waits 1000 milliseconds for key 17 (A) or key 2 (B) to be pressed
+%
+% See also WAITKEYUP, WAITKEYSEQUENCE, GETKEYEVENTS, CLEARKEYEVENTS.
+%
+% Cogent 2007 function.
+% Ben, Apr. 2008.
+
+% This is a replacement of Cogent2000 eponymous function. It's backward compatible.
+
+% Yield Interval. From PsychToolBox (KbWait) :
+% "Time (in seconds) to wait between "failed" checks, in order to not
+% overload the system in realtime mode. 5 msecs seems to be an ok value..."
+YieldInterval = 5; % (ms)
+
+% Input Args
+if nargin && isnumeric(varargin{1}) && varargin{1} > 103
+	MaxTime = varargin{1}; % For compatib. with Cog2000
+	varargin(1) = [];
+end
+if length varargin >= 1,	KeyIn = varargin{1};
+else						KeyIn = 1 : 103;
+end
+n = 1; % TODO: n > 1.
+
+% Main Loop
+while ~ok
+	% Wait for "YieldInterval" to Prevent System Overload.
+	wait(YieldInterval);
+	
+	% Peek Keybord Events Stack
+	[Times,IDs,isDown] = peekkeyevents;
+	
+	% 
+	f = find(ismember(IDs,KeyIn) & isDown);
+	if length(f) >= n
+		f = f(1:n);
+		KeyOut = IDs(f);
+		TimesOut = Times(f);
+% 		if length IDs > n
+% 			
+% 		
+end

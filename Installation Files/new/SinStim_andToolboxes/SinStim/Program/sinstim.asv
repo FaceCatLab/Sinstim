@@ -1,0 +1,6 @@
+function sinstim(varargin)
+% SinStim   Sinusoidal stimulation -- EEG Experimental Program.
+path ('C:\Documents and Settings\RossionPC\My Documents\MATLAB\sinstim\cosyparallelport',path) 
+path ('C:\Documents and Settings\RossionPC\My Documents\MATLAB\sinstim\cosyparallelport\ParallelPort_InpOut32',path)
+
+sinstim1p8p9(varargin{:});

@@ -1,0 +1,450 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>openserialport</title>
+      <meta name="generator" content="MATLAB 7.5">
+      <meta name="date" content="2012-10-05">
+      <meta name="m-file" content="openserialport"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#2">&lt;TODO: From http://psychtoolbox.org/wikka.php?wakka=PlatformDifferences</a></li>
+               <li><a href="#3">MAIN FUNCTION</a></li>
+               <li><a href="#4">%%%%%%%%%%%%%%%%%%%%%%%% SUB-FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%% %%</a></li>
+               <li><a href="#5">openserialport_with_cogent</a></li>
+               <li><a href="#6">openserialport_with_matlab</a></li>
+            </ul>
+         </div><pre class="codeinput"><span class="comment">% OPENSERIALPORT  Open a serial port.</span>
+<span class="comment">%    OPENSERIALPORT  opens serial port (COM1) with default settings.</span>
+<span class="comment">%</span>
+<span class="comment">%    OPENSERIALPORT(port) opens given port. 'port' is the port name (e.g.: 'COM1') or the port number</span>
+<span class="comment">%    (e.g.: 1). Multiple serial ports are not supported: you can only open one port at a time.</span>
+<span class="comment">%</span>
+<span class="comment">%    OPENSERIALPORT(port,baudrate) specifies baudrate (bits per second). Default value is 9600.</span>
+<span class="comment">%    Valid values are: 110,300,600,1200,2400,4800,9600,14400,19200,38400,56000,57600,115200,128000,256000.</span>
+<span class="comment">%    Most modern devices support rates up to 115200. Higher values are not always supported.</span>
+<span class="comment">%</span>
+<span class="comment">%    OPENSERIALPORT(port,baudrate,parity) specifies also parity. Default is 'none'.</span>
+<span class="comment">%    Valid values: 'none', 'odd', 'even', 'mark', 'space'.</span>
+<span class="comment">%</span>
+<span class="comment">%    OPENSERIALPORT(port,baudrate,parity,stopbits) specifies stop bits. Default is 1.</span>
+<span class="comment">%    Valid values: 1, 1.5, 2.</span>
+<span class="comment">%</span>
+<span class="comment">%    OPENSERIALPORT(port,baudrate,parity,stopbits,bytesize) specifies byte size. Default is 8.</span>
+<span class="comment">%    Valid values: 4 to 8. (Programmer's note: not sure for values 5 to 7.)</span>
+<span class="comment">%</span>
+<span class="comment">% Examples:</span>
+<span class="comment">%    openserialport(1,9600,'none',1,8)  is the same than openserialport with no arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%    openserialport('COM4',115200)  opens COM4 with correct settings for the USB serial port (1) of</span>
+<span class="comment">%                              Saint Luc's 3 Tesla fMRI scanner or (2) of Benoit Gerard's PSB.</span>
+<span class="comment">%</span>
+<span class="comment">% See also: READSERIALBYTES, SENDSERIALBYTES, WAITSERIALBYTE, GETSERIALBYTES, CLOSESERIALPORT,</span>
+<span class="comment">%    OPENPARALLELPORT.</span>
+<span class="comment">%</span>
+<span class="comment">% Ben, Jan. 2008</span>
+</pre><h2>&lt;TODO: From http://psychtoolbox.org/wikka.php?wakka=PlatformDifferences<a name="2"></a></h2><pre> Psychserial, Joystick
+ The old and crufty PsychSerial command is available for Windows. It is identical to the version bundled with the old Windows PTB2.54. Matlab itself also allows to control the serial port via its serial command on Windows and Linux. It works well but has the drawback of only working when Java is enabled and it is significantly slower. Our IOPort driver provides high quality, flexible serial port support (and for USB serial ports) with high timing precision on all operating systems, so use of IOPort is strongly recommended.
+ The OS-X version supports joysticks via the new GamePad functions. We provide some simple joystick support for Windows via WinJoystickMex and this link: Seems to have some downloadable joystick driver for Matlab on Windows..
+&gt;</pre><h2>MAIN FUNCTION<a name="3"></a></h2><pre class="codeinput"><span class="keyword">function</span> openserialport(port,baudrate,parity,stopbits,bytesize)
+
+<span class="keyword">global</span> COSY_SERIALPORT
+
+<span class="keyword">if</span> isempty(COSY_SERIALPORT)
+    COSY_SERIALPORT.OpenPorts = [];
+    COSY_SERIALPORT.PORTS = [];
+<span class="keyword">end</span>
+
+<span class="comment">% INPUTS ARGS: DEFAULT VALUES</span>
+<span class="keyword">if</span> ~exist(<span class="string">'port'</span>,<span class="string">'var'</span>) <span class="comment">% &lt;v3-beta4&gt;</span>
+    iPort = 1;
+<span class="keyword">elseif</span> isnumeric(port)
+    iPort = port;
+<span class="keyword">elseif</span> ischar(port) &amp;&amp;  strncmpi(port,<span class="string">'com'</span>,3)
+    iPort = str2num(port(4:end));
+<span class="keyword">else</span>
+    error(<span class="string">'Invalid ''port'' argument.'</span>)
+<span class="keyword">end</span>
+COSY_SERIALPORT.PORTS(iPort).isOpen = false;
+PortName = [<span class="string">'COM'</span> int2str(iPort)];
+<span class="keyword">if</span> ~exist(<span class="string">'baudrate'</span>,<span class="string">'var'</span>), baudrate = 9600; <span class="keyword">end</span>
+<span class="keyword">if</span> ~exist(<span class="string">'parity'</span>  ,<span class="string">'var'</span>), parity = <span class="string">'none'</span>;
+<span class="keyword">else</span> parity = lower(parity);
+<span class="keyword">end</span>
+<span class="keyword">if</span> ~exist(<span class="string">'stopbits'</span>,<span class="string">'var'</span>), stopbits = 1; <span class="keyword">end</span>
+<span class="keyword">if</span> ~exist(<span class="string">'bytesize'</span>,<span class="string">'var'</span>), bytesize = 8;
+<span class="keyword">elseif</span> ~(bytesize &gt;= 4 &amp;&amp; bytesize &lt;= 8), error(<span class="string">'Invalid ''bytesize'' value.'</span>)
+<span class="keyword">end</span>
+
+<span class="comment">% OPEN PORTS USING RIGHT LIBRARY</span>
+lib = getcosylib(<span class="string">'SerialPort'</span>);
+
+disp(<span class="string">' '</span>)
+
+<span class="keyword">switch</span> upper(lib(1:3))
+    <span class="keyword">case</span> <span class="string">'COG'</span> <span class="comment">% COGENT</span>
+        dispinfo(mfilename,<span class="string">'info'</span>,[<span class="string">'Opening '</span> PortName <span class="string">' port, using Cogent library...'</span>])
+        err = openserialport_with_cogent(iPort,baudrate,parity,stopbits,bytesize);
+    <span class="keyword">case</span> <span class="string">'MAT'</span> <span class="comment">% MATLAB standard lib</span>
+        dispinfo(mfilename,<span class="string">'info'</span>,[<span class="string">'Opening '</span> PortName <span class="string">' port, using standard MATLAB library...'</span>])
+        dispinfo(mfilename,<span class="string">'warning'</span>,<span class="string">'Standard MATLAB library has a critical performances issue !!! (Expect a dozen of milliseconds to send one byte!)'</span>)
+        err = openserialport_with_matlab(iPort,baudrate,parity,stopbits,bytesize);
+    <span class="keyword">case</span> <span class="string">'PTB'</span> <span class="comment">% PsychToolBox3 IOport</span>
+<span class="comment">%         IOPort('OpenSerialPort', PortName,</span>
+
+        <span class="comment">% &lt;TODO&gt;</span>
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> err &lt; 0 <span class="comment">% Error: port not open</span>
+    error([<span class="string">'Cannot open  '</span> PortName <span class="string">' port.'</span>])
+<span class="keyword">else</span> <span class="comment">% Port open: Update global var.</span>
+    <span class="comment">% Update port status (kept redundantly in two vars for convenience)</span>
+    COSY_SERIALPORT.OpenPorts = union(COSY_SERIALPORT.OpenPorts,iPort);
+    COSY_SERIALPORT.PORTS(iPort).isOpen = true;
+    <span class="comment">% Keep port's attributes for archive</span>
+    COSY_SERIALPORT.PORTS(iPort).baudrate = baudrate;
+    COSY_SERIALPORT.PORTS(iPort).parity = parity;
+    COSY_SERIALPORT.PORTS(iPort).stopbits = stopbits;
+    COSY_SERIALPORT.PORTS(iPort).bytesize = bytesize;
+<span class="keyword">end</span>
+</pre><h2>%%%%%%%%%%%%%%%%%%%%%%%% SUB-FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%% %%<a name="4"></a></h2>
+         <h2>openserialport_with_cogent<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> err = openserialport_with_cogent(iPort,baudrate,parity,stopbits,bytesize)
+
+<span class="keyword">global</span> COSY_SERIALPORT
+<span class="comment">% global cogent</span>
+
+err = 0;
+
+<span class="comment">% CHECK IF COSYGRAPHICS IS RUNNING</span>
+<span class="keyword">if</span> ~isopen(<span class="string">'display'</span>)
+	error(<span class="string">'CosyGraphics must be started (with STARTCOGENT or STARTPSYCH) before to use OPENSERIALPORT.'</span>)
+<span class="keyword">end</span>
+
+<span class="comment">% VARIABLES</span>
+<span class="comment">% Port</span>
+serial.name = [<span class="string">'COM'</span>,num2str(iPort)]; <span class="comment">% &lt;used only by logserialbytes. TODO: suppress it&gt;</span>
+<span class="comment">% Baudrate</span>
+valid = [110,300,600,1200,2400,4800,9600,14400,19200,38400,56000,57600,115200,128000,256000];
+<span class="keyword">if</span> ismember(baudrate,valid)
+    attr.Baud = baudrate;
+<span class="keyword">else</span>
+    error([<span class="string">'Bad ''baudrate'' value. Valid values are:'</span> char(10) int2str(valid)]);
+<span class="keyword">end</span>
+<span class="comment">% Parity</span>
+<span class="keyword">switch</span> lower(parity)
+    <span class="keyword">case</span> <span class="string">'none'</span>,	attr.Parity = 0;
+    <span class="keyword">case</span> <span class="string">'odd'</span>,		attr.Parity = 1;
+    <span class="keyword">case</span> <span class="string">'even'</span>,	attr.Parity = 2;
+    <span class="keyword">case</span> <span class="string">'mark'</span>,	attr.Parity = 3;
+    <span class="keyword">case</span> <span class="string">'space'</span>,	attr.Parity = 4;
+    <span class="keyword">otherwise</span> error(<span class="string">'Bad ''parity'' value.'</span>)
+<span class="keyword">end</span>
+<span class="comment">% Stop bits</span>
+<span class="keyword">switch</span> lower(stopbits)
+    <span class="keyword">case</span> 1,		attr.StopBits = 0;
+    <span class="keyword">case</span> 1.5,	attr.StopBits = 1;
+    <span class="keyword">case</span> 2,		attr.StopBits = 2;
+    <span class="keyword">otherwise</span> error(<span class="string">'Bad ''stopbits'' value.'</span>)
+<span class="keyword">end</span>
+<span class="comment">% Byte size</span>
+attr.ByteSize = bytesize;
+<span class="comment">% data: those fields will be used during run-time</span>
+<span class="comment">% serial.value       = [];</span>
+<span class="comment">% serial.time        = [];</span>
+
+<span class="comment">% OPEN PORTS</span>
+<span class="keyword">try</span>
+	hPort = CogSerial(<span class="string">'open'</span>,serial.name);
+<span class="comment">%     serial.hPort = hPort;</span>
+<span class="keyword">catch</span>
+	err = -1;
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> ~err
+    <span class="comment">% SET PORTS</span>
+    CogSerial(<span class="string">'setattr'</span>,hPort,attr);
+    CogSerial(<span class="string">'record'</span>,hPort,1000);
+
+    <span class="comment">% GLOBAL VAR.</span>
+    COSY_SERIALPORT.PORTS(iPort).Lib = <span class="string">'Cog'</span>; <span class="comment">% &lt;TODO: Port-by-port lib support not yet fully implemented.&gt;</span>
+    COSY_SERIALPORT.PORTS(iPort).COGENT.hPort = hPort;
+<span class="comment">%     cogent.serial{iPort} = serial; % &lt;TODO: suppress this&gt;</span>
+<span class="keyword">end</span>
+</pre><h2>openserialport_with_matlab<a name="6"></a></h2><pre class="codeinput"><span class="keyword">function</span> err = openserialport_with_matlab(iPort,baudrate,parity,stopbits,bytesize)
+
+<span class="keyword">global</span> COSY_SERIALPORT  <span class="comment">% &lt;v3-alpha4: Not needed.&gt;</span>
+
+err = 0;
+
+<span class="keyword">try</span> <span class="comment">% &lt;instrfindall doesn't exist on M6.5&gt;</span>
+    fclose(instrfindall);  <span class="comment">% &lt;v3-alpha4: Be sure to close all Matlab serial ojects.&gt;</span>
+<span class="keyword">catch</span>
+<span class="keyword">end</span>
+
+PortName = [<span class="string">'COM'</span> int2str(iPort)];
+PortObj = serial(PortName,<span class="string">'baudrate'</span>,115200); <span class="comment">% Open communication with PSB</span>
+<span class="keyword">if</span> strcmp(PortObj.Status,<span class="string">'closed'</span>)
+    fopen(PortObj);
+<span class="keyword">end</span>
+COSY_SERIALPORT.PORTS(iPort).Lib = <span class="string">'MATLAB'</span>; <span class="comment">% &lt;TODO: Port-by-port lib support not yet fully implemented.&gt;</span>
+COSY_SERIALPORT.PORTS(iPort).MATLAB.PortObj = PortObj;
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.5<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+% OPENSERIALPORT  Open a serial port.
+%    OPENSERIALPORT  opens serial port (COM1) with default settings.
+%
+%    OPENSERIALPORT(port) opens given port. 'port' is the port name (e.g.: 'COM1') or the port number  
+%    (e.g.: 1). Multiple serial ports are not supported: you can only open one port at a time.
+%
+%    OPENSERIALPORT(port,baudrate) specifies baudrate (bits per second). Default value is 9600.
+%    Valid values are: 110,300,600,1200,2400,4800,9600,14400,19200,38400,56000,57600,115200,128000,256000.
+%    Most modern devices support rates up to 115200. Higher values are not always supported.
+%
+%    OPENSERIALPORT(port,baudrate,parity) specifies also parity. Default is 'none'.
+%    Valid values: 'none', 'odd', 'even', 'mark', 'space'.
+%
+%    OPENSERIALPORT(port,baudrate,parity,stopbits) specifies stop bits. Default is 1.
+%    Valid values: 1, 1.5, 2.
+%
+%    OPENSERIALPORT(port,baudrate,parity,stopbits,bytesize) specifies byte size. Default is 8.
+%    Valid values: 4 to 8. (Programmer's note: not sure for values 5 to 7.)
+%    
+% Examples:
+%    openserialport(1,9600,'none',1,8)  is the same than openserialport with no arguments.
+%
+%    openserialport('COM4',115200)  opens COM4 with correct settings for the USB serial port (1) of
+%                              Saint Luc's 3 Tesla fMRI scanner or (2) of Benoit Gerard's PSB.
+%
+% See also: READSERIALBYTES, SENDSERIALBYTES, WAITSERIALBYTE, GETSERIALBYTES, CLOSESERIALPORT,
+%    OPENPARALLELPORT.
+%
+% Ben, Jan. 2008
+
+%% <TODO: From http://psychtoolbox.org/wikka.php?wakka=PlatformDifferences
+%   Psychserial, Joystick
+%   The old and crufty PsychSerial command is available for Windows. It is identical to the version bundled with the old Windows PTB2.54. Matlab itself also allows to control the serial port via its serial command on Windows and Linux. It works well but has the drawback of only working when Java is enabled and it is significantly slower. Our IOPort driver provides high quality, flexible serial port support (and for USB serial ports) with high timing precision on all operating systems, so use of IOPort is strongly recommended.
+%   The OS-X version supports joysticks via the new GamePad functions. We provide some simple joystick support for Windows via WinJoystickMex and this link: Seems to have some downloadable joystick driver for Matlab on Windows..
+%  >
+
+%% MAIN FUNCTION
+function openserialport(port,baudrate,parity,stopbits,bytesize)
+
+global COSY_SERIALPORT
+
+if isempty(COSY_SERIALPORT)
+    COSY_SERIALPORT.OpenPorts = [];
+    COSY_SERIALPORT.PORTS = [];
+end
+
+% INPUTS ARGS: DEFAULT VALUES
+if ~exist('port','var') % <v3-beta4>
+    iPort = 1; 
+elseif isnumeric(port)
+    iPort = port;
+elseif ischar(port) &&  strncmpi(port,'com',3)
+    iPort = str2num(port(4:end));
+else
+    error('Invalid ''port'' argument.')
+end
+COSY_SERIALPORT.PORTS(iPort).isOpen = false;
+PortName = ['COM' int2str(iPort)];
+if ~exist('baudrate','var'), baudrate = 9600; end
+if ~exist('parity'  ,'var'), parity = 'none';
+else parity = lower(parity);
+end
+if ~exist('stopbits','var'), stopbits = 1; end
+if ~exist('bytesize','var'), bytesize = 8;
+elseif ~(bytesize >= 4 && bytesize <= 8), error('Invalid ''bytesize'' value.')
+end
+
+% OPEN PORTS USING RIGHT LIBRARY
+lib = getcosylib('SerialPort');
+
+disp(' ')
+
+switch upper(lib(1:3))
+    case 'COG' % COGENT
+        dispinfo(mfilename,'info',['Opening ' PortName ' port, using Cogent library...'])
+        err = openserialport_with_cogent(iPort,baudrate,parity,stopbits,bytesize);
+    case 'MAT' % MATLAB standard lib
+        dispinfo(mfilename,'info',['Opening ' PortName ' port, using standard MATLAB library...'])
+        dispinfo(mfilename,'warning','Standard MATLAB library has a critical performances issue !!! (Expect a dozen of milliseconds to send one byte!)')
+        err = openserialport_with_matlab(iPort,baudrate,parity,stopbits,bytesize);
+    case 'PTB' % PsychToolBox3 IOport
+%         IOPort('OpenSerialPort', PortName, 
+        
+        % <TODO>
+end
+
+if err < 0 % Error: port not open
+    error(['Cannot open  ' PortName ' port.'])
+else % Port open: Update global var.
+    % Update port status (kept redundantly in two vars for convenience)
+    COSY_SERIALPORT.OpenPorts = union(COSY_SERIALPORT.OpenPorts,iPort);
+    COSY_SERIALPORT.PORTS(iPort).isOpen = true;
+    % Keep port's attributes for archive
+    COSY_SERIALPORT.PORTS(iPort).baudrate = baudrate;
+    COSY_SERIALPORT.PORTS(iPort).parity = parity;
+    COSY_SERIALPORT.PORTS(iPort).stopbits = stopbits;
+    COSY_SERIALPORT.PORTS(iPort).bytesize = bytesize;
+end
+
+%% %%%%%%%%%%%%%%%%%%%%%%%% SUB-FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%% %%
+
+%% openserialport_with_cogent
+function err = openserialport_with_cogent(iPort,baudrate,parity,stopbits,bytesize)
+
+global COSY_SERIALPORT
+% global cogent
+
+err = 0;
+
+% CHECK IF COSYGRAPHICS IS RUNNING
+if ~isopen('display')
+	error('CosyGraphics must be started (with STARTCOGENT or STARTPSYCH) before to use OPENSERIALPORT.')
+end
+
+% VARIABLES
+% Port
+serial.name = ['COM',num2str(iPort)]; % <used only by logserialbytes. TODO: suppress it>
+% Baudrate
+valid = [110,300,600,1200,2400,4800,9600,14400,19200,38400,56000,57600,115200,128000,256000];
+if ismember(baudrate,valid)
+    attr.Baud = baudrate;
+else
+    error(['Bad ''baudrate'' value. Valid values are:' char(10) int2str(valid)]);
+end
+% Parity
+switch lower(parity)
+    case 'none',	attr.Parity = 0;
+    case 'odd',		attr.Parity = 1;
+    case 'even',	attr.Parity = 2;
+    case 'mark',	attr.Parity = 3;
+    case 'space',	attr.Parity = 4;
+    otherwise error('Bad ''parity'' value.')
+end
+% Stop bits
+switch lower(stopbits)
+    case 1,		attr.StopBits = 0;
+    case 1.5,	attr.StopBits = 1;
+    case 2,		attr.StopBits = 2;
+    otherwise error('Bad ''stopbits'' value.')
+end
+% Byte size 
+attr.ByteSize = bytesize;
+% data: those fields will be used during run-time
+% serial.value       = [];
+% serial.time        = [];
+
+% OPEN PORTS
+try
+	hPort = CogSerial('open',serial.name);
+%     serial.hPort = hPort;
+catch
+	err = -1;
+end
+
+if ~err
+    % SET PORTS
+    CogSerial('setattr',hPort,attr);
+    CogSerial('record',hPort,1000);
+
+    % GLOBAL VAR.
+    COSY_SERIALPORT.PORTS(iPort).Lib = 'Cog'; % <TODO: Port-by-port lib support not yet fully implemented.>
+    COSY_SERIALPORT.PORTS(iPort).COGENT.hPort = hPort;
+%     cogent.serial{iPort} = serial; % <TODO: suppress this>
+end
+
+%% openserialport_with_matlab
+function err = openserialport_with_matlab(iPort,baudrate,parity,stopbits,bytesize)
+
+global COSY_SERIALPORT  % <v3-alpha4: Not needed.>
+
+err = 0;
+
+try % <instrfindall doesn't exist on M6.5>
+    fclose(instrfindall);  % <v3-alpha4: Be sure to close all Matlab serial ojects.>
+catch
+end
+
+PortName = ['COM' int2str(iPort)];
+PortObj = serial(PortName,'baudrate',115200); % Open communication with PSB
+if strcmp(PortObj.Status,'closed')
+    fopen(PortObj);
+end
+COSY_SERIALPORT.PORTS(iPort).Lib = 'MATLAB'; % <TODO: Port-by-port lib support not yet fully implemented.>
+COSY_SERIALPORT.PORTS(iPort).MATLAB.PortObj = PortObj;
+
+##### SOURCE END #####
+-->
+   </body>
+</html>
